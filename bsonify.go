@@ -13,8 +13,7 @@ import (
 // The struct or map can contain pointers, interfaces, maps, and structs.
 // Map keys should be strings. BSON tags with omitempty are supported.
 func SetUpdateM(v any) bson.M {
-	rv := reflect.ValueOf(v)
-	dereference(rv)
+	rv := dereference(reflect.ValueOf(v))
 
 	switch rv.Kind() {
 	case reflect.Struct, reflect.Map:
@@ -34,8 +33,7 @@ func SetUpdateM(v any) bson.M {
 // The struct or map can contain pointers, interfaces, maps, and structs.
 // Map keys should be strings. BSON tags with omitempty are supported.
 func SetUpdateD(v any) bson.D {
-	rv := reflect.ValueOf(v)
-	dereference(rv)
+	rv := dereference(reflect.ValueOf(v))
 
 	switch rv.Kind() {
 	case reflect.Struct, reflect.Map:
@@ -50,8 +48,7 @@ func SetUpdateD(v any) bson.D {
 // pointers, interfaces, maps, and structs. BSON tags with omitempty are
 // supported.
 func Dump(v any) bson.D {
-	rv := reflect.ValueOf(v)
-	dereference(rv)
+	rv := dereference(reflect.ValueOf(v))
 
 	switch rv.Kind() {
 	case reflect.Struct, reflect.Map:

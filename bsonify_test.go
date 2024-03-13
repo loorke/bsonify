@@ -3,11 +3,22 @@ package bsonify
 import (
 	"testing"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/stretchr/testify/require"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
 func TestToBSON(t *testing.T) {
+	{
+		opts := a{Ab: true}
+		d := SetUpdateD(opts)
+		for i := range d {
+			d[i].Key += "OLOLo"
+		}
+
+		spew.Dump(d)
+	}
+
 	var (
 		n    int = 1.0
 		opts     = a{Ab: true, Ae: c{Ca: &n}}
